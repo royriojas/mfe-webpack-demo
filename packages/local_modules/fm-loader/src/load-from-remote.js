@@ -1,7 +1,7 @@
 import { deferred } from "./deferred";
 import { loadScript } from "./loader";
 
-export const loadAndInitiateWebpackContainer = async remote => {
+export const loadAndInitiateWebpackContainer = async (remote) => {
   const { name, url } = remote;
 
   await loadScript(url);
@@ -17,33 +17,30 @@ export const loadAndInitiateWebpackContainer = async remote => {
   await container.init(__webpack_share_scopes__.default);
 
   return container;
-}
+};
 
-export const loadFromRemote = ({ remote = {}, component } = {}) => {
+export const loadFromRemote = async ({ remote = {}, component } = {}) => {
   const { name, url } = remote;
 
   if (!url) throw new Error("Missing remote url");
   if (!name) throw new Error("Missing remote name");
   if (!component) throw new Error("Missing component");
 
-  return async () => {
+  const container = await loadAndInitiateWebpackContainer({ url, name });
 
-    const container = await loadAndInitiateWebpackContainer({ url, name });
+  if (!container.get)
+    throw new Error(`Cannot load external remote: ${name} from url: ${url}`);
 
-    if (!container.get)
-      throw new Error(`Cannot load external remote: ${name} from url: ${url}`);
+  component = component.match(/^\.\//) ? component : `./${component}`;
 
-    component = component.match(/^\.\//) ? component : `./${component}`;
+  const factory = await container.get(component);
 
-    const factory = await container.get(component);
+  if (!factory)
+    throw new Error(
+      `Cannot load ${component} in remote: ${name} from url ${url}`
+    );
 
-    if (!factory)
-      throw new Error(
-        `Cannot load ${component} in remote: ${name} from url ${url}`
-      );
+  const Module = factory();
 
-    const Module = factory();
-
-    return Module;
-  };
+  return Module;
 };

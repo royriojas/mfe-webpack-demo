@@ -7,9 +7,9 @@ import Tabs from "./Tabs";
 import { theme } from "./theme";
 import { loadFromRemote } from 'fm-loader';
 
-const Page = React.lazy(loadFromRemote({
+const Page = React.lazy(() => loadFromRemote({
   remote: {
-    url: 'http://localhost:3001/remoteEntry.js',
+    url: 'https://app1.local.dev.com/remoteEntry.js',
     name: 'app_01',
   },
   component: 'Page',

@@ -64,14 +64,14 @@ export default function SideNav() {
           <ListItemText primary="Routing" />
         </ListItem>
         <ListSubheader>Apps</ListSubheader>
-        <ListItem button component="a" href="http://localhost:3001">
-          <ListItemText primary="App #1" secondary="http://localhost:3001" />
+        <ListItem button component="a" href="https://app1.local.dev.com">
+          <ListItemText primary="App #1" secondary="https://app1.local.dev.com" />
         </ListItem>
-        <ListItem button component="a" href="http://localhost:3002">
-          <ListItemText primary="App #2" secondary="http://localhost:3002" />
+        <ListItem button component="a" href="https://app2.local.dev.com">
+          <ListItemText primary="App #2" secondary="https://app2.local.dev.com" />
         </ListItem>
-        <ListItem button component="a" href="http://localhost:3003">
-          <ListItemText primary="App #3" secondary="http://localhost:3003" />
+        <ListItem button component="a" href="https://app3.local.dev.com">
+          <ListItemText primary="App #3" secondary="https://app3.local.dev.com" />
         </ListItem>
       </List>
     </Drawer>

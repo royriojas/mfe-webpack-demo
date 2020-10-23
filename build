@@ -11,3 +11,5 @@ cd ../../../
 yarn
 
 npm run clean
+
+echo "Check the readme file to see how to generate local certificates"

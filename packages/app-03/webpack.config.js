@@ -35,9 +35,6 @@ module.exports = () => ({
       name: "app_03",
       library: { type: "var", name: "app_03" },
       filename: "remoteEntry.js",
-      remotes: {
-        app_01: 'app_01',
-      },
       exposes: {
         './Button': "./src/Button",
         './MyButton': './src/MyButton',

@@ -19,9 +19,9 @@ import React from "react";
 
 import { loadFromRemote } from 'fm-loader';
 
-const Button = React.lazy(loadFromRemote({
+const Button = React.lazy(() => loadFromRemote({
   remote: {
-    url: 'http://localhost:3003/remoteEntry.js',
+    url: 'https://app3.local.dev.com/remoteEntry.js',
     name: 'app_03',
   },
   component: 'Button',

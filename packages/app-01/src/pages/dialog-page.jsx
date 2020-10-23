@@ -6,7 +6,7 @@ import Page from "../Page";
 import React from "react";
 import { loadFromRemote } from "fm-loader";
 
-const Dialog = React.lazy(loadFromRemote({ remote: { url: 'http://localhost:3002/remoteEntry.js', name: 'app_02' }, component: 'Dialog' }));
+const Dialog = React.lazy(() => loadFromRemote({ remote: { url: 'https://app2.local.dev.com/remoteEntry.js', name: 'app_02' }, component: 'Dialog' }));
 
 const DialogPage = () => (
   <Page title="Dialog Demo">
