@@ -5,7 +5,7 @@ const scriptsCache = {};
 export const loadScript = async (src) => {
 
   if (scriptsCache[src]) {
-    return scriptsCache;
+    return scriptsCache[src];
   }
 
   const dfd = deferred({ timeout: 30000 });
